@@ -4,7 +4,7 @@
 struct Order
 {
 	int code;
-	char name[11];
+	char name[10];
 	double price;
 	int amountOfSoldGoods;
 	int amountOfUnsoldGoods;

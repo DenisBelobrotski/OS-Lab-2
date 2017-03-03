@@ -10,44 +10,32 @@ int main(int argc, char* argv[])
 	setlocale(0, ".1251");
 	int numOfWritings = 0;
 	Order tmpOrder;
-	if (argc > 1)
+	ofstream fout(argv[1], ios::binary);
+
+	cout << "Enter number of writing iterations:\n";
+	cin >> numOfWritings;
+
+	fout.write((char*)&numOfWritings, sizeof(int));
+	for (int i = 0; i < numOfWritings; i++)
 	{
-		ofstream fout(argv[1], ios::binary);
+		cout << "Enter code of product:\n";
+		cin >> tmpOrder.code;
 
-		cout << argv[1] << endl;
+		cout << "Enter name of product (max 10 symbols)(without space symbols):\n";
+		cin >> tmpOrder.name;
 
-		cout << "Enter number of writing iterations:\n";
-		cin >> numOfWritings;
+		cout << "Enter price of product:\n";
+		cin >> tmpOrder.price;
 
-		for (int i = 0; i < numOfWritings; i++)
-		{
-			cout << "Enter code of product:\n";
-			cin >> tmpOrder.code;
+		cout << "Enter amount of sold goods:\n";
+		cin >> tmpOrder.amountOfSoldGoods;
 
-			cout << "Enter name of product (max 10 symbols)(without space symbols):\n";
-			cin >> tmpOrder.name;
+		cout << "Enter amount of unsold goods:\n";
+		cin >> tmpOrder.amountOfUnsoldGoods;
 
-			cout << "Enter price of product:\n";
-			cin >> tmpOrder.price;
-
-			cout << "Enter amount of sold goods:\n";
-			cin >> tmpOrder.amountOfSoldGoods;
-
-			cout << "Enter amount of unsold goods:\n";
-			cin >> tmpOrder.amountOfUnsoldGoods;
-
-			fout.write((char*)&tmpOrder, sizeof tmpOrder);
-		}
-		fout.close();
-
-		ifstream fin(argv[1], ios::binary);
-		if (!fin.is_open()) {
-			cout << "File is not opened" << endl;
-			return 0;
-		}
+		fout.write((char*)&tmpOrder, sizeof (Order));
 	}
-	else
-		cout << "Not arguments\n";
-				
+	fout.close();
+		
 	return 0;
 }

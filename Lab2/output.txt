@@ -1,0 +1,14 @@
+Report about sold goods. File: D:\”чЄба\2 курс\прога\ќси\Lab2\Lab2\input.bin
+
+code: 123
+name: aaaa
+price: 3.5
+sold goods: 3
+total price: 10.5
+
+code: 321
+name: bbbbbb
+price: 3.33333
+sold goods: 2
+total price: 6.66666
+
